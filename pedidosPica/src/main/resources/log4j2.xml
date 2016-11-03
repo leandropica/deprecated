@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config" monitorInterval="30" packages="com.technisys.banking.configuration">
+	<!-- Para usar configuracion externa, setear el siguiente JVM parameter: 
+			-Dlog4j.configurationFile=file:///<path_to_file>/log4j2.xml -->
+			
+	<Appenders>
+		<File name="FILE" fileName="/home/pica/Escritorio/pedidosPica.log" append="true">
+			<!-- <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" /> -->
+			<PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<!-- <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" /> -->
+			<PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</Console>
+	</Appenders>
+
+	<!-- ALL > TRACE > DEBUG > INFO > WARN > ERROR > FATAL > OFF -->
+	<Loggers>
+
+		<Logger name="com.pica" level="trace">
+			<AppenderRef ref="FILE" />
+		</Logger>
+		
+		<Logger name="org.springframework" level="debug">
+			<AppenderRef ref="STDOUT"/>
+		</Logger>
+		
+		<Root level="info">
+			<AppenderRef ref="STDOUT" />
+			<!--<AppenderRef ref="FILE" />-->
+		</Root>
+	</Loggers>
+
+</Configuration>
