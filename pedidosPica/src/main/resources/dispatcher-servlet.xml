@@ -8,22 +8,19 @@
  http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<context:annotation-config />
-	<!-- Defino la ubicacion del REST Controller que ofrece la api -->
+	<!-- Defino la ubicacion de los controladores REST -->
 	<context:component-scan base-package="com.pica.controller" />
-
 
 	<bean id="jacksonMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
 				<ref bean="jacksonMessageConverter" />
 			</list>
 		</property>
-	</bean>
-						
-	
+	</bean>	
 		
 	<bean id="multipartResolver"
   		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

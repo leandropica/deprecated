@@ -1,72 +1,79 @@
 <!DOCTYPE html>
-<html ng-app="orders">
-<head>
-	<meta charset="UTF-8" />
-	<title>Pedidos Pica</title>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pedidos Pica</title>
+		<!-- Includes -->
+		<script src="js/angular.min.js" type="text/javascript"></script>
+		<script src="js/angular-resource.min.js" type="text/javascript"></script>
+		<script src="js/angular-route.min.js" type="text/javascript"></script>
+		<script src="js/ui-bootstrap-tpls-0.11.0.min.js" type="text/javascript"></script>
+		<script src="js/app.js" type="text/javascript"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+	</head>
 
-	<script src="js/angular.min.js" ></script>
-	<script src="js/angular-resource.min.js" ></script>
-	<script src="js/order.js" ></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"
-		type="text/javascript"></script> <!-- change me to a fixed file -->
-	<link href="css/bootstrap.min.css" rel="stylesheet"/>
-	
-</head>
+	<body ng-app="app">	
+		<!-- Header image -->
+		<div class="container">	
+			<div class="row">
+				<section id="hero-area" class="col-md-12">
+					<img class="img-responsive" src="images/header.jpg" alt="" style="width:100%">
+				</section>
+			</div>
+		</div>
+		
+		<!-- Header menu --> <!-- don't work -->
+		<!--<header ng-include src="'pages/menu.html'" />-->
 
-<body ng-controller="ordersController" ng-init="getOrders()">
-	<!-- Products -->
-	<div class="container panel">
-		<h2>Hoy tenemos ...</h2>
-		<div id="slides_control" ng-init="loadProducts()">
-			<carousel interval="myInterval">
-				<slide ng-repeat="slide in slides" active="slide.active">
-					<img ng-src="{{slide.image}}">
-					<div class="carousel-caption">
-						<h4>Slide {{$index+1}}</h4>
-					</div>
-				</slide>
-			</carousel>
-		</div>
-	</div>
-	<!-- Orders list -->
-	<div ng-show="orders == null">No hay pedidos!</div>
-	<div ng-show="orders != null" class="container panel">
-		<h2>Pedidos realizados</h2>
-		<table class="table table-striped" >	
-			<thead>
-				<tr>
-					<th>Cliente</th>
-					<th>Producto</th>
-					<th>Cantidad</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="order in orders">
-					<td>{{order.user}}</td>
-					<td>{{order.product.description}}</td>
-					<td>{{order.cant}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<!-- My order -->
-	<div class="container panel panel-default">
-		<h2>Hace tu pedido</h2>
-		<div class="panel-heading">Completa los datos</div>
-		<div class="panel-body">
-			<label for="cliente">Cliente:</label>
-			<input id="user" name="user" ng-model="current.user" type="text" />
-			
-			<label for="producto">Producto:</label>
-			<input id="product" name="product" ng-model="current.productId" type="text" />
-			
-			<label for="cantidad">Cantidad:</label>
-			<input id="cant" name="cant" ng-model="current.cant" type="number" />
-			
-			<button id="addBtn" class="btn" ng-click="addOrder()">Hacer Pedido</button>
-		</div>
-		<div class="panel-body"><h5>{{msg}}</h5></div>
-	</div>
-	
-</body>
+		<!-- Header navigation --> 
+		<nav id="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="block">
+							<nav class="navbar navbar-default">
+								<div class="container-fluid">
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+											<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											</button>
+													<a class="navbar-brand" href="#">
+													<img src="images/logo.png" alt="Logo">
+													</a>
+									</div>
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+											<ul class="nav navbar-nav navbar-right" id="top-nav">
+													<!--<li><a href="#hero-area">Home</a></li>-->
+													<li><a href="#/">Index</a></li>
+													<li><a href="#/orders">Orders</a></li>
+													<li><a href="#/products">Products</a></li>
+													<li><a href="#about-us">about us</a></li>
+											</ul>
+									</div><!-- /.navbar-collapse -->
+								</div><!-- /.container-fluid -->
+							</nav>
+						</div>
+					</div><!-- .col-md-12 close -->
+				</div><!-- .row close -->
+			</div><!-- .container close -->
+		</nav><!-- header close -->
+
+
+
+		<!-- Main -->
+		<div ng-view></div>
+		
+		<!-- Footer -->
+			<footer class="text-center">
+				<p>Powered by Pika@2016</p>
+			</footer>
+	</body>
 </html>

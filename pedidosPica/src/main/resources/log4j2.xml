@@ -4,7 +4,7 @@
 			-Dlog4j.configurationFile=file:///<path_to_file>/log4j2.xml -->
 			
 	<Appenders>
-		<File name="FILE" fileName="/home/pica/Escritorio/pedidosPica.log" append="true">
+		<File name="FILE" fileName="/home/pica/Documentos/Proyectos/PedidosPica/logs/pedidosPica.log" append="true">
 			<!-- <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" /> -->
 			<PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
 		</File>
@@ -21,6 +21,9 @@
 			<AppenderRef ref="FILE" />
 		</Logger>
 		
+		<Logger name="org.springframework" level="error">
+			<AppenderRef ref="FILE"/>
+		</Logger>
 		<Logger name="org.springframework" level="debug">
 			<AppenderRef ref="STDOUT"/>
 		</Logger>

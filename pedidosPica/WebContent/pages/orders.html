@@ -1,0 +1,40 @@
+<!-- Orders -->
+<div ng-controller="ordersController" ng-init="getOrders()" class="container panel">
+	<div ng-show="orders == null">No hay pedidos!</div>
+	<div ng-show="orders != null">
+		<h2>Pedidos realizados</h2>
+		<table class="table table-striped" >	
+			<thead>
+				<tr>
+					<th>Cliente</th>
+					<th>Producto</th>
+					<th>Cantidad</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="order in orders">
+					<td>{{order.user}}</td>
+					<td>{{order.product.description}}</td>
+					<td>{{order.cant}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container panel panel-default">
+		<h2>Hace tu pedido</h2>
+		<div class="panel-heading">Completa los datos</div>
+		<div class="panel-body">
+			<label for="cliente">Cliente:</label>
+			<input id="user" name="user" ng-model="current.user" type="text" />
+			
+			<label for="producto">Producto:</label>
+			<input id="product" name="product" ng-model="current.productId" type="text" />
+			
+			<label for="cantidad">Cantidad:</label>
+			<input id="cant" name="cant" ng-model="current.cant" type="number" />
+			
+			<button id="addBtn" class="btn" ng-click="addOrder()">Hacer Pedido</button>
+		</div>
+		<div class="panel-body"><h5>{{msg}}</h5></div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<!-- Products -->
+<div ng-controller="productsController" ng-init="loadProducts()" class="container panel">
+	<h2>Hoy tenemos ...</h2>
+	<div id="slides_control" style="height: 305px" >
+		<carousel interval="myInterval" no-wrap="noWrapSlides">
+			<slide ng-repeat="product in products" index="product.id" active="active">
+				<img ng-src="images/{{product.image}}">
+				<div class="carousel-caption">
+					<h4>Slide {{$index}}</h4>
+				</div>
+			</slide>
+		</carousel>
+	</div>
+</div>
